@@ -55,9 +55,9 @@ JSONEditor.Validator = Class.extend({
     // `enum`
     if(schema["enum"]) {
       valid = false;
-      for(i=0; i<schema["enum"].length; i++) {
-        if(stringified === JSON.stringify(schema["enum"][i])) valid = true;
-      }
+      $each(schema["enum"], function (i, enumValue) {
+        if (stringified === JSON.stringify(enumValue)) valid = true;
+      });
       if(!valid) {
         errors.push({
           path: path,
